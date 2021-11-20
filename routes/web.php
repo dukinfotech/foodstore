@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SanphamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,15 @@ use App\Http\Controllers\SupplierController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', [PageController::class, 'trangchu']);
 // Đăng nhập / đăng xuất
 Route::get('/dangnhap', [UserController::class, 'trangdangnhap'])->name('login');
 Route::post('/dangnhap', [UserController::class, 'xulydangnhap']);
 Route::get('/dangxuat', [UserController::class, 'xulydangxuat']);
+Route::get('/sanpham/{id}/themvaogiohang', [SanphamController::class, 'themvaogiohang']);
+Route::get('/sanpham/{id}/giamsoluong', [SanphamController::class, 'giamsoluong']);
+Route::get('/sanpham/{id}/xoagiohang', [SanphamController::class, 'xoagiohang']);
 
 // Trang quản lý
 Route::prefix('admin')->middleware('auth')->group(function () {
@@ -43,4 +45,5 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('sanpham/{id}/sua', [ProductController::class, 'sua']);
     Route::put('sanpham/{id}/sua', [ProductController::class, 'capnhat']);
     Route::delete('sanpham/{id}', [ProductController::class, 'xoa']);
+
 });

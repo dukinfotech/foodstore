@@ -1,6 +1,20 @@
 #loginForm {
-  width: 500px;
-  border: 1px solid #888;
-  padding: 50px;
-  border-radius: 8px;
+    width: 500px;
+    border: 1px solid #888;
+    padding: 50px;
+    border-radius: 8px;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+.timework {
+    margin-top: 20px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #fff;
+    color: black;
 }

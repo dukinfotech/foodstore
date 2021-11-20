@@ -13,6 +13,7 @@ class ProductController extends Controller
         return view('sanpham/danhsach', ['products' => $products]);
     }
 
+
     public function tao() {
         $suppliers = Supplier::all();
         return view('sanpham.tao', ['suppliers' => $suppliers]);
