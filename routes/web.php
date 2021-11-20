@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SanphamController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::get('/dangxuat', [UserController::class, 'xulydangxuat']);
 Route::get('/sanpham/{id}/themvaogiohang', [SanphamController::class, 'themvaogiohang']);
 Route::get('/sanpham/{id}/giamsoluong', [SanphamController::class, 'giamsoluong']);
 Route::get('/sanpham/{id}/xoagiohang', [SanphamController::class, 'xoagiohang']);
+Route::get('/dathang', [SanphamController::class, 'dathang']);
+Route::post('/muahang', [SanphamController::class, 'muahang']);
 
 // Trang quản lý
 Route::prefix('admin')->middleware('auth')->group(function () {
@@ -45,5 +48,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('sanpham/{id}/sua', [ProductController::class, 'sua']);
     Route::put('sanpham/{id}/sua', [ProductController::class, 'capnhat']);
     Route::delete('sanpham/{id}', [ProductController::class, 'xoa']);
+    
+    Route::get('donhang/danhsach', [OrderController::class, 'danhsach']);
 
 });

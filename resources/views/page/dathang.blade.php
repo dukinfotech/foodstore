@@ -44,21 +44,52 @@
   </div>
 </nav>
 <section class="container mt-5" >
-    <div class="row">
-        @foreach($products as $product)
-        <div class="col-md-4 mt-5">
-            <div class="card">
-                <img class="card-img-top" height="200" src="{{ $product->image }}" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title text-bold">{{ $product->name }}</h4>
-                    <h4 class="card-text text-danger">Giá: {{ $product->price }} VNĐ</h4>
-                    <div class="card-text">Đơn Vị: {{ $product->unit }}</div>
-                    <div class="card-text"> {{ $product->description }}</div>
-                    <a href="/sanpham/{{ $product->id }}/themvaogiohang" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                </div>
-            </div>
+    <table class="table">
+        <thead>
+            <td>#</td>
+            <td>Tên sẩn phẩm</td>
+            <td>Nhà cung cấp</td>
+            <td>Số lượng</td>
+            <td>Đơn giá</td>
+            <td>Thành tiền</td>
+        </thead>
+        <tbody>
+          @php
+            $price_total = 0;
+          @endphp
+            @foreach ($giohang as $index => $sanpham)
+              @php
+                $price_total += $sanpham->thanhtien;
+              @endphp
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $sanpham->name }}</td>
+                    <td>{{ $sanpham->supplier->name }}</td>
+                    <td>{{ $sanpham->soluong }}</td>
+                    <td>{{ $sanpham->price }}</td>
+                    <td>{{ $sanpham->thanhtien }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <h3>Thành tiền: <span class="text-danger">{{ $price_total }} đồng</span></h3>
+    
+    <form style="margin-top:100px" method="POST" action="/muahang">
+        @csrf
+        <input type="hidden" name="price_total" value="{{ $price_total }}">
+        <div class="form-group">
+            <label>Tên người mua</label>
+            <input type="text" name="name" class="form-control" placeholder="Nhập họ và tên" required>
         </div>
-        @endforeach
-    </div>
+        <div class="form-group">
+            <label>Địa chỉ</label>
+            <input type="text" name="address" class="form-control" placeholder="Nhập địa chỉ" required>
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" name="phone" class="form-control" placeholder="Nhập số điện thoại" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Mua hàng</button>
+    </form>
 </section>
 @endsection

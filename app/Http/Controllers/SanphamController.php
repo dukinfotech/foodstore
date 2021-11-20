@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Supplier;
+use App\Models\Order;
 
 class SanphamController extends Controller
 {
     public function themvaogiohang($id, Request $request) {
-        $product = Product::find($id);
+        $product = Product::with('supplier')->find($id);
         $product->soluong = 1;
+        $product->thanhtien = $product->soluong * $product->price;
         $giohang = null;
         $datontaisanpham = false;
         if ($request->session()->has('giohang')) {
@@ -20,6 +22,7 @@ class SanphamController extends Controller
                     // Cong don so luong cua san pham da ton tai trong gio hang
                     $datontaisanpham = true;
                     $sanphamtronggiohang->soluong = $sanphamtronggiohang->soluong + 1;
+                    $sanphamtronggiohang->thanhtien = $sanphamtronggiohang->soluong * $sanphamtronggiohang->price;
                 }
             }
             if (! $datontaisanpham) {
@@ -79,5 +82,38 @@ class SanphamController extends Controller
         return back();
     }
 
-   
+    public function dathang(Request $request) {
+        if ($request->session()->has('giohang')) {
+            $giohang = $request->session()->get('giohang');
+            return view('page.dathang', ['giohang' => $giohang]);
+        }
+
+        return back();
+    }
+
+    public function muahang(Request $request) {
+
+        if ($request->session()->has('giohang')) {
+            $order = new Order();
+            $order->name = $request->name;
+            $order->address = $request->address;
+            $order->phone = $request->phone;
+            $order->price_total = $request->price_total;
+            $order->isPaid = false;
+            $order->isShipped = false;
+
+            $order->save();
+
+            $productIds = [];
+            $giohang = $request->session()->get('giohang');
+            foreach ($giohang as $key => $sanphamtronggiohang) {
+                array_push($productIds, $sanphamtronggiohang->id);
+            }
+
+            $order->products()->attach($productIds);
+            $request->session()->forget('giohang');
+        }
+
+        return redirect('/');
+    }
 }
