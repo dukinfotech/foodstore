@@ -19,8 +19,15 @@ class PageController extends Controller
         else{
             $giohang = [];
         }
-        $products = Product::all();
 
-        return view('page/trangchu', ['products' => $products, 'giohang' => $giohang]);
+        if ($request->q) {
+            $search = true;
+            $products = Product::where('name', 'like', '%'.$request->q.'%')->get();
+        } else {
+            $search = false;
+            $products = Product::all();
+        }
+
+        return view('page/trangchu', ['products' => $products, 'giohang' => $giohang, 'search' => $search]);
     }
 }
