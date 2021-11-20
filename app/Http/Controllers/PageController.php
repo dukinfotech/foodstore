@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Ads;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -28,6 +29,8 @@ class PageController extends Controller
             $products = Product::all();
         }
 
-        return view('page/trangchu', ['products' => $products, 'giohang' => $giohang, 'search' => $search]);
+        $ads = Ads::all();
+
+        return view('page/trangchu', ['products' => $products, 'giohang' => $giohang, 'search' => $search, 'ads' => $ads]);
     }
 }

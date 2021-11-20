@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SanphamController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +51,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('sanpham/{id}', [ProductController::class, 'xoa']);
     
     Route::get('donhang/danhsach', [OrderController::class, 'danhsach']);
+    Route::get('quangcao', [AdsController::class, 'danhsach']);
+    Route::post('quangcao', [AdsController::class, 'luu']);
 
 });

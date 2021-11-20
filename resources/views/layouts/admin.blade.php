@@ -51,6 +51,9 @@
           <li class="nav-item">
             <a href="/admin/donhang/danhsach">Quản lý đơn hàng</a>
           </li>
+          <li class="nav-item">
+            <a href="/admin/quangcao">Quản lý quảng cáo</a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

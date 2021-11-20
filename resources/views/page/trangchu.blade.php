@@ -43,7 +43,23 @@
     </form>
   </div>
 </nav>
-<section class="container mt-5" >
+<div class="text-center mt-3">
+  @php
+    $dacotopads = false;
+  @endphp
+  @foreach ($ads as $qc)
+    @if ($qc->name == 'top-ads')
+      @php
+        $dacotopads = true;
+      @endphp
+      <img src="/{{ $qc->image }}" alt="Quảng cáo">
+    @endif
+  @endforeach
+  @if (! $dacotopads)
+    <img src="{{ asset('img/ads-placeholder.jpg') }}" alt="Quảng cáo">
+  @endif
+</div>
+<section class="container">
     @if($search)
       <h5>Kết quả tìm kiếm: {{ count($products) }}</h5>
     @endif
