@@ -11,7 +11,7 @@
       <td>Tên</td>
       <td>Nhà cung cấp</td>
       <td>Số lượng</td>
-      <td>Đơn vị</td>
+      <td>Loại Hàng</td>
       <td>Ảnh</td>
       <td>Đơn giá</td>
     </thead>
@@ -19,7 +19,7 @@
       @foreach ($products as $p)
       <tr>
         <td>{{ $p->id }}</td>
-        <td>{{ $p->name }}</td>
+        <td>{{ $p->name }}</td> 
         <td>{{ $p->supplier->name }}</td>
         <td>{{ $p->quantity }}</td>
         <td>{{ $p->unit }}</td>

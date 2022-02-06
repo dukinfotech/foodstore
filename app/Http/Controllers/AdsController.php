@@ -26,4 +26,9 @@ class AdsController extends Controller
 
         return back();
     }
+
+    public function xoa($id) {
+        Ads::destroy($id);
+        return back();
+    }
 }

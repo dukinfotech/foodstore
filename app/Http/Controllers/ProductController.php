@@ -64,11 +64,7 @@ class ProductController extends Controller
         $name = $request->name;
         $quantity = $request->quantity;
         $unit = $request->unit;
-        $image = null;
-        if ($request->file('image')) {
-            $image = $request->file('image')->store('public/anhsanpham');
-            $image = str_replace('public', 'storage', $image);
-        }
+        
         $price = $request->price;
         $description = $request->description;
 
@@ -78,7 +74,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         if (! $product) {
-            abort(404);
+            abort(404); 
         }
         $product->name = $name;
         $product->quantity = $quantity;

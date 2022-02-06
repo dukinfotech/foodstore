@@ -25,7 +25,7 @@
       <input type="number" min="0" class="form-control" placeholder="Nhập số lượng" name="quantity" required value="{{ $product->quantity }}">
     </div>
     <div class="form-group">
-      <label>Đơn vị <span class="text-danger">*</span></label>
+      <label>Loại hàng <span class="text-danger">*</span></label>
       <input type="text" class="form-control" placeholder="Nhập đơn vị" name="unit" required value="{{ $product->unit }}">
     </div>
     <div class="form-group">

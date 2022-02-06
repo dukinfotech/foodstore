@@ -6,6 +6,7 @@
   <title>@yield('title')</title>
   <link rel="stylesheet" href="{{ asset('/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -33,26 +34,29 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
-      <span class="brand-text font-weight-light">Trang quản lý</span>
+      <span class="brand-text font-weight-bold">ADMIN</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="/admin/sanpham/danhsach">Quản lý sản phẩm</a>
+      <nav class="mt-2 ">
+        <ul class="nav nav-pills nav-sidebar flex-column mt-3" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item mt-2 ml-2">
+            <a href="/admin/sanpham/danhsach"><i class="fab fa-product-hunt"></i>  Quản lý sản phẩm</a>
           </li>
-          <li class="nav-item">
-            <a href="/admin/nhacungcap/danhsach">Quản lý nhà cung cấp</a>
+          <li class="nav-item mt-2 ml-2">
+            <a href="/admin/nhacungcap/danhsach"><i class="fas fa-parachute-box"></i>  Quản lý nhà cung cấp</a>
           </li>
-          <li class="nav-item">
-            <a href="/admin/donhang/danhsach">Quản lý đơn hàng</a>
+          <li class="nav-item mt-2 ml-2">
+            <a href="/admin/donhang/danhsach"><i class="fas fa-list"></i>  Quản lý đơn hàng</a>
           </li>
-          <li class="nav-item">
-            <a href="/admin/quangcao">Quản lý quảng cáo</a>
+          <li class="nav-item mt-2 ml-2">
+            <a href="/admin/quangcao"><i class="fab fa-buysellads"></i>  Quản lý quảng cáo</a>
+          </li>
+          <li class="nav-item mt-2 ml-2">
+            <a href="/admin/news/danhsach"><i class="far fa-newspaper"></i> Quản lý bài đăng</a>
           </li>
         </ul>
       </nav>
@@ -92,6 +96,7 @@
 
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>

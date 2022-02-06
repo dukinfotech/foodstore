@@ -16,6 +16,13 @@
         <td>{{ $index + 1}}</td>
         <td>{{ $qc->name }}</td>
         <td><img src="/{{ $qc->image }}" alt="" height="50"></td>
+        <td>
+        <form action="/admin/quangcao/{{ $qc->id }}" method="POST" class="d-inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">DELETE</button>  
+          </form>
+        </td>
       </tr>
       @endforeach
     </tbody>

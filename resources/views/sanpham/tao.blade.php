@@ -24,7 +24,7 @@
       <input type="number" min="0" class="form-control" placeholder="Nhập số lượng" name="quantity" required>
     </div>
     <div class="form-group">
-      <label>Đơn vị <span class="text-danger">*</span></label>
+      <label>Loại hàng <span class="text-danger">*</span></label>
       <input type="text" class="form-control" placeholder="Nhập đơn vị" name="unit" required>
     </div>
     <div class="form-group">
@@ -32,7 +32,7 @@
       <input type="file" class="form-control" name="image" required id="selectImage" accept="image/png, image/gif, image/jpeg">
     </div>
     <div>
-        <img id="image" height="100" class="d-none">
+        <img id="image" height="100" >
     </div>
     <div class="form-group">
       <label>Giá <span class="text-danger">*</span></label>

@@ -8,6 +8,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SanphamController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdsController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,5 +54,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('donhang/danhsach', [OrderController::class, 'danhsach']);
     Route::get('quangcao', [AdsController::class, 'danhsach']);
     Route::post('quangcao', [AdsController::class, 'luu']);
+    Route::delete('quangcao/{id}', [AdsController::class, 'xoa']);
+
+    Route::get('news/danhsach', [PostController::class, 'danhsach']);
+    Route::get('news/tao', [PostController::class, 'tao']);
+    Route::post('news/tao', [AdsController::class, 'luu']);
 
 });

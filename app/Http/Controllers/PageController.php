@@ -23,7 +23,7 @@ class PageController extends Controller
 
         if ($request->q) {
             $search = true;
-            $products = Product::where('name', 'like', '%'.$request->q.'%')->get();
+            $products = Product::where('unit', 'like', '%'.$request->q.'%')->get();
         } else {
             $search = false;
             $products = Product::all();
